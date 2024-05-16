@@ -1,7 +1,7 @@
-file = open("file.txt", 'r')
+file = open("file.txt", 'a')
 
-print(file.read(10))
+seq = ["1 строка\n", "2 string\n", "3 string\n"]
 
-print(file.read())
+file.writelines(seq)
 
 file.close()
