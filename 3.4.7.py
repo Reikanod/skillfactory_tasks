@@ -1,9 +1,5 @@
 with open(r'additional_files\input.txt', 'r') as f:
-    list_1 = [line.strip() for line in f]
-    list_1 = reversed(list_1)
-    with open(r'additional_files\output.txt', 'a') as f_end:
-        for line in list_1:
-            line = line + '\n'
+    with open(r'additional_files\output.txt', 'w') as f_end:
+        for line in reversed(f.readlines()):
             f_end.write(line)
-
 
