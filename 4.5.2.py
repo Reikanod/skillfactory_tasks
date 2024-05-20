@@ -27,17 +27,19 @@ G = {
         "Спасская": 6}
 }
 
+
 D = {k : 100 for k in G.keys()}  # расстояния
-start_st = 'Адмиралтейская'  # стартовая вершина
-D[start_st] = 0  # расстояние от неё до самой себя равно нулю
+start_k = 'Адмиралтейская'  # стартовая вершина
+D[start_k] = 0  # расстояние от неё до самой себя равно нулю
 U = {k : False for k in G.keys()}  # флаги просмотра вершин
 P = {k : None for k in G.keys()}
 
 for _ in range(len(D)):
     # выбираем среди непросмотренных наименьшее по расстоянию
-    min_k = min([st for st in U.keys() if not U[st]], key = lambda x: D[x])
+    min_k = min([k for k in U.keys() if not U[k]], key = lambda x: D[x])
+
     for v in G[min_k].keys():  # проходимся по всем смежным вершинам
-        D[v] = min(D[v], D[min_k] + G[min_k][v])  # минимум
+        if D[v] <
+           D[v] = min(D[v], D[min_k] + G[min_k][v])  # минимум
+           P[v] = G[min_k]
     U[min_k] = True  # просмотренную вершину помечаем
-
-
