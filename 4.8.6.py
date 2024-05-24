@@ -8,22 +8,26 @@ def merge_sort(arr):
 
 def merge(left, right):
     i, j, result = 0, 0, []
-    while i < len(left) and j < len(right):
-        if left[i] > right[j]:
-            result.append(left[i])
-            i += 1
+    # переварачиваем оба массива и из конца будем удалять элемент, который добавляем в результирующий массив
+    left.reverse()
+    right.reverse()
+    # пока не кончится одна из половинок массива
+    while left and right:
+        if left[-1] >= right[-1]: # сравниваем и наименьший элемент в результирующий массив, удаляя его из половинки
+            result.append(right.pop())
         else:
-            result.append(right[j])
-            j += 1
+            result.append(left.pop())
 
-    if i < len(left):
+    if left: # в том массиве, в котором остался хвост сохраняем в новый список
+       tail = left
+    else:
+        tail = right
 
-    tail = left if i < len(left) else tail = right
-    for _ in range(len(tail)):
+    while tail: # хвост добавляем в результирующий массив в конец
         result.append(tail.pop())
 
     return result
 
 arr = [2, 3, 1, 4, 6, 5, 9, 8, 7]
-merge_sort(arr)
-print(arr)
+print(merge_sort(arr))
+
